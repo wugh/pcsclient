@@ -20,7 +20,7 @@ print(args)
 json_content = open(args.token).read()
 json_content = json.loads(json_content)
 token = json_content['access_token']
-pcs = PCS(token)
+pcs = PCS(token, api_template='https://c.pcs.baidu.com/rest/2.0/pcs/{0}')
 
-f = open(args.file)
+f = open(args.file, 'rb')
 pcs.upload('/apps/gentoo/' + os.path.basename(args.file), f)
